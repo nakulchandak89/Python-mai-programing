@@ -2,23 +2,23 @@
 
 import cv2
 
-# img = cv2.imread(r"Open CV\\mix.png")
+img = cv2.imread(r"Open CV\\mix.png")
 
-# cv2.imshow("img",img)
+cv2.imshow("img",img)
 
 
-# #this function is for resizeing the image and rescaleing the image 
-# def rescaleFrame (frame, scale=0.75): #75% of size is less now as scall is 0.75 so if we make it 0.10 it will be 10% of the og 
-#     width = int(frame.shape[1]*scale) #width is define 
-#     height = int (frame.shape[0]*scale) #height is define
+#this function is for resizeing the image and rescaleing the image 
+def rescaleFrame (frame, scale=0.75): #75% of size is less now as scall is 0.75 so if we make it 0.10 it will be 10% of the og 
+    width = int(frame.shape[1]*scale) #width is define 
+    height = int (frame.shape[0]*scale) #height is define
     
-#     demensions = (width,height) #demension is tuple variable for storing the data 
+    demensions = (width,height) #demension is tuple variable for storing the data 
 
-#     return cv2.resize(frame,demensions, interpolation=cv2.INTER_AREA)
+    return cv2.resize(frame,demensions, interpolation=cv2.INTER_AREA)
 
 
-# resize_image = rescaleFrame(img)
-# cv2.imshow("new",resize_image)
+resize_image = rescaleFrame(img)
+cv2.imshow("new",resize_image)
 
 # cv2.waitKey(0)
 
