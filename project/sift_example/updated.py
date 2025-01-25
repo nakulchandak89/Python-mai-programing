@@ -5,7 +5,7 @@ import numpy as np
 replacement_image = cv2.imread('Open CV\\resources\\image.jpg')
 
 # Start video feed
-cap = cv2.VideoCapture("project\\Resources\\red news.mp4")
+cap = cv2.VideoCapture(0)
 
 # Minimum area threshold for major objects (adjust as needed)
 min_area_threshold = 3100
@@ -17,18 +17,23 @@ while True:
 
     # Convert frame to HSV and define red color ranges
     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    lower_red1 = np.array([0, 120, 70])
-    upper_red1 = np.array([10, 255, 255])
-    lower_red2 = np.array([170, 120, 70])
-    upper_red2 = np.array([180, 255, 255])
-
+    # lower_red1 = np.array([0, 120, 70])
+    # upper_red1 = np.array([10, 255, 255])
+    # lower_red2 = np.array([170, 120, 70])
+    # upper_red2 = np.array([180, 255, 255])
+    # grean1 = np.array([35, 100, 100])
+    # grean2 = np.array([85, 255, 255])
+    black = np.array([125, 6, 255])
+    black2 = np.array([124,13, 153])
     # Create masks for red color
-    mask1 = cv2.inRange(hsv_frame, lower_red1, upper_red1)
-    mask2 = cv2.inRange(hsv_frame, lower_red2, upper_red2)
-    red_mask = cv2.bitwise_or(mask1, mask2)
+    mask_black = cv2.inRange(hsv_frame, black, black2)
+    # mask = cv2.inRange(hsv_frame,grean1, grean2)
+    # mask1 = cv2.inRange(hsv_frame, lower_red1, upper_red1)
+    # mask2 = cv2.inRange(hsv_frame, lower_red2, upper_red2)
+    # red_mask = cv2.bitwise_or(mask1, mask2)
 
     # Find contours for the red regions
-    contours, _ = cv2.findContours(red_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(mask_black, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     for contour in contours:
         # Filter contours by area
